@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 
 class ClubAdapter (private val listClub: ArrayList<Club>) : RecyclerView.Adapter<ClubAdapter.ClubViewHolder>() {
 
+     private lateinit var onItemClickCallback: OnItemClickCallback
+
     // disini kita perlu extends viewholdernya recyclerview
     inner class ClubViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvName : TextView = itemView.findViewById(R.id.tv_item_name)
@@ -36,6 +38,21 @@ class ClubAdapter (private val listClub: ArrayList<Club>) : RecyclerView.Adapter
 
         holder.tvName.text = club.name
 
+        holder.itemView.setOnClickListener{
+            onItemClickCallback.onItemClicked(listClub[holder.adapterPosition])
+        }
+
     }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: Club)
+    }
+
+
+
 
 }
