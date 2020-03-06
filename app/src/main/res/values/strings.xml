@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KotlinStarter</string>
+    <string name="heroes_name">Real madrid</string>
+    <string name="detail">hehehe</string>
+</resources>
